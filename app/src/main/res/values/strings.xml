@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">DuLich</string>
+    <string name="new_user_sigup">Tạo tài khoản mới?<b>Đăng ký</b></string>
 </resources>
