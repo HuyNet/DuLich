@@ -15,7 +15,11 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.Objects;
 import java.util.regex.Pattern;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -113,6 +117,35 @@ public class RegisterActivity extends AppCompatActivity {
                 });
     }
     private void updateUserInfo(){
+        progressDialog.setMessage("Lưu thông tin người dùng....");
 
+        //timestamp
+        String uid=firebaseAuth.getUid();
+
+        //setup data chungr bi add vao db
+        HashMap<String,Objects> hashMap=new HashMap<>();
+        hashMap.put("uid", uid);
+        hashMap.put("email",email);
+        hashMap.put("name",name);
+        hashMap.put("profileImage", "");
+        hashMap.put("userType","user");
+        hashMap.put("timestamp",timestamp);
+
+        //set data to db
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users");
+        ref.child(uid)
+                .setValue(hashMap)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void unused) {
+
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
     }
 }
