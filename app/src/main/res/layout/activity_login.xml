@@ -51,7 +51,7 @@
                 app:hintEnabled="false">
 
 
-                <TextView
+                <EditText
                     android:id="@+id/emailEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -71,11 +71,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/emailTil"
-                android:layout_marginTop="0dp"
+                android:layout_marginTop="15dp"
                 app:passwordToggleEnabled="true"
                 app:hintEnabled="false">
 
-                <TextView
+                <EditText
                     android:id="@+id/passwordEt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -117,14 +117,19 @@
     </ScrollView>
 
     <!--No Account, Register-->
-    <TextView
+    <LinearLayout
         android:id="@+id/noAccountTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:padding="10dp"
-        android:text="@string/new_user_sigup"
-        android:textColor="@color/black"/>
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:text="@string/new_user_sigup"
+            android:textColor="@color/black"/>
+    </LinearLayout>
+
 
 </RelativeLayout>
